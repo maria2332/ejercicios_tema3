@@ -6,13 +6,13 @@ y ningún disco podrá ponerse en- cima de otro más pequeño. Se dijo a los sac
 llegaría el fin del mundo. Resolver este problema de la Torre de Hanói.
 """
 
-def hanoi(n, origen, destino, auxiliar):
+def torre_hanoi(n, origen, destino, temporal):
     if n == 1:
-        print("Mover disco de", origen, "a", destino)
-    else:
-        hanoi(n-1, origen, auxiliar, destino)
-        hanoi(1, origen, destino, auxiliar)
-        hanoi(n-1, auxiliar, destino, origen)
+        print("Mueva el disco 1 de la aguja", origen, "a la aguja", destino)
+        return
+    torre_hanoi(n-1, origen, temporal, destino)
+    print("Mueva el disco", n, "de la aguja", origen, "a la aguja", destino)
+    torre_hanoi(n-1, temporal, destino, origen)
 
-hanoi(3, "A", "C", "B")
-
+# Ejemplo de uso: mover 3 discos desde la aguja 1 a la aguja 3
+torre_hanoi(3, 1, 3, 2)
