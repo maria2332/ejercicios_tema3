@@ -16,3 +16,36 @@ def torre_hanoi(n, origen, destino, temporal):
 
 # Ejemplo de uso: mover 3 discos desde la aguja 1 a la aguja 3
 torre_hanoi(3, 1, 3, 2)
+
+
+# def torre_hanoi(n, origen, destino, temporal):
+#     movimientos = {}  # diccionario para guardar los movimientos calculados
+#     cola = [(n, origen, destino, temporal)]  # cola para iteración por cola
+    
+#     while cola:
+#         n, origen, destino, temporal = cola.pop(0)
+        
+#         if n == 1:
+#             print("Mueva el disco 1 de la aguja", origen, "a la aguja", destino)
+#             movimientos[(n, origen, destino)] = 1
+#         else:
+#             # verificar si el movimiento ya ha sido calculado
+#             if (n-1, origen, temporal) not in movimientos:
+#                 cola.insert(0, (n-1, origen, temporal, destino))
+#                 continue
+#             if (1, origen, destino) not in movimientos:
+#                 cola.insert(0, (1, origen, destino, temporal))
+#                 continue
+#             if (n-1, temporal, destino) not in movimientos:
+#                 cola.insert(0, (n-1, temporal, destino, origen))
+#                 continue
+            
+#             # mover los discos y actualizar el diccionario de movimientos
+#             print("Mueva el disco", n, "de la aguja", origen, "a la aguja", destino)
+#             movimientos[(n, origen, destino)] = 1
+#             movimientos[(n-1, origen, temporal)] = 1
+#             movimientos[(1, origen, destino)] = 1
+#             movimientos[(n-1, temporal, destino)] = 1
+
+# # Ejemplo de uso: mover 3 discos desde la aguja 1 a la aguja 3
+# torre_hanoi(3, 1, 3, 2)
