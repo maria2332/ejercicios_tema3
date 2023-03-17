@@ -5,3 +5,14 @@ A los sacerdotes se les encomendó la tarea de pasarlos todos desde la primera a
 y ningún disco podrá ponerse en- cima de otro más pequeño. Se dijo a los sacerdotes que, cuando hubieran terminado de mover los discos, 
 llegaría el fin del mundo. Resolver este problema de la Torre de Hanói.
 """
+
+def hanoi(n, origen, destino, auxiliar):
+    if n == 1:
+        print("Mover disco de", origen, "a", destino)
+    else:
+        hanoi(n-1, origen, auxiliar, destino)
+        hanoi(1, origen, destino, auxiliar)
+        hanoi(n-1, auxiliar, destino, origen)
+
+hanoi(3, "A", "C", "B")
+
