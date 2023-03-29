@@ -59,11 +59,11 @@ class Lista:
             self.nave_actual = self.nave_actual.siguiente
             return nave
 
-    def __str__(self):
-        cadena = ""
-        for nave in self:
-            cadena += str(nave.nombre) + " - " + str(nave.largo) + " - " + str(nave.tripulacion) + " - " + str(nave.pasajeros) + " - " + str(nave.siguiente) + " - " + " - " + " - " + "
+#     def __str__(self):
+#         cadena = ""
+#         for nave in self:
+#             cadena += str(nave.nombre) + " - " + str(nave.largo) + " - " + str(nave.tripulacion) + " - " + str(nave.pasajeros) + " - " + str(nave.siguiente) + " - " + " - " + " - " + "
 
-"
-            return cadena
+# "
+#             return cadena
 
