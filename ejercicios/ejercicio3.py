@@ -15,5 +15,3 @@ mostrar toda la información de la nave más pequeña y la más grande.
 
 
 
-
-

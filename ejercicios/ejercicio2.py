@@ -2,53 +2,48 @@
 Realiza el  código para calcular el determinante de una matriz cuadrada de [3 x 3], regla de Sarrus de forma recursiva y de forma iterativa
 """
 
-# Matriz de ejemplo
-matrix = [[1, 2, 3],
-          [4, 5, 6],
-          [7, 8, 9]]
+class Matriz3x3:
+    def _init_(self, elementos):
+        if len(elementos) != 3 or not all(len(row) == 3 for row in elementos):
+            raise ValueError("La matriz debe ser de tamaño 3x3")
+        self.elementos = elementos
 
-# Cálculo del determinante utilizando la regla de Sarrus de forma recursiva
-def determinant_sarrus_recursive(matrix):
-    if len(matrix) == 2:
-        return (matrix[0][0]*matrix[1][1]) - (matrix[0][1]*matrix[1][0])
-    elif len(matrix) == 3:
-        a = matrix[0][0]
-        b = matrix[0][1]
-        c = matrix[0][2]
-        d = matrix[1][0]
-        e = matrix[1][1]
-        f = matrix[1][2]
-        g = matrix[2][0]
-        h = matrix[2][1]
-        i = matrix[2][2]
-        first = a*e*i + b*f*g + c*d*h
-        second = c*e*g + b*d*i + a*f*h
-        return first - second
+def determinante_iterativo(matriz):
+    if len(matriz) != 3 or not all(len(row) == 3 for row in matriz):
+        raise ValueError("La matriz debe ser de tamaño 3x3")
+        
+    det = 0
+    for i in range(3):
+        prod_pos = 1
+        prod_neg = 1
+        for j in range(3):
+            prod_pos *= matriz[j][(i+j) % 3]
+            prod_neg *= matriz[j][(i-j) % 3]
+        det += prod_pos - prod_neg
+    return det
+
+def determinante_recursivo(matriz):
+    n = len(matriz)
+    if not all(len(row) == n for row in matriz):
+        raise ValueError("La matriz debe ser cuadrada")
+
+    if n == 1:
+        return matriz[0][0]
+    elif n == 2:
+        return matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0]
     else:
-        determinant = 0
-        for i in range(len(matrix)):
-            sub_matrix = [row[:i] + row[i+1:] for row in matrix[1:]]
-            sign = (-1) ** i
-            sub_determinant = determinant_sarrus_recursive(sub_matrix)
-            determinant += sign * matrix[0][i] * sub_determinant
-        return determinant
+        det = 0
+        for i in range(n):
+            submatriz = [row[:i] + row[i+1:] for row in matriz[1:]]
+            det += matriz[0][i] * ((-1) ** i) * determinante_recursivo(submatriz)
+        return det
 
-# Cálculo del determinante utilizando la regla de Sarrus de forma iterativa
-def determinant_sarrus_iterative(matrix):
-    a = matrix[0][0]
-    b = matrix[0][1]
-    c = matrix[0][2]
-    d = matrix[1][0]
-    e = matrix[1][1]
-    f = matrix[1][2]
-    g = matrix[2][0]
-    h = matrix[2][1]
-    i = matrix[2][2]
-    first = a*e*i + b*f*g + c*d*h
-    second = c*e*g + b*d*i + a*f*h
-    return first - second
+# Ejemplo de uso
+matriz_3x3 = [
+    [2, 3, 1],
+    [4, 1, 3],
+    [3, 2, 1]
+]
 
-# Resultados
-print("Matriz:", matrix)
-print("Determinante (forma recursiva):", determinant_sarrus_recursive(matrix))
-print("Determinante (forma iterativa):", determinant_sarrus_iterative(matrix))
+print("Determinante iterativo (Regla de Sarrus): ", determinante_iterativo(matriz_3x3))
+print("Determinante recursivo (Expansión por cofactores): ", determinante_recursivo(matriz_3x3))
