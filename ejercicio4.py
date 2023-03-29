@@ -148,33 +148,34 @@ class Polinomio(object):
         return paux
     
 
-p1 = Polinomio()
-p1.agregar_termino(3, 7) # Agrega el término 7x^3
-p1.agregar_termino(5, -2) # Agrega el término -2x^5
+if __name__ == "__main__":
+    p1 = Polinomio()
+    p1.agregar_termino(3, 7) # Agrega el término 7x^3
+    p1.agregar_termino(5, -2) # Agrega el término -2x^5
 
-p2 = Polinomio()
-p2.agregar_termino(4, 7) # Agrega el término 7x^4
-p2.agregar_termino(1, 1) # Agrega el término x (X^1)
+    p2 = Polinomio()
+    p2.agregar_termino(4, 7) # Agrega el término 7x^4
+    p2.agregar_termino(1, 1) # Agrega el término x (X^1)
 
-print(p1.mostrar()) # Muestra el polinomio 1
-print(p2.mostrar()) # Muestra el polinomio 2
-print(p1.obtener_valor(7)) # Devuelve el coeficiente del término x^7
-print(p2.obtener_valor(1)) # Devuelve el coeficiente del término x^1
+    print(p1.mostrar()) # Muestra el polinomio 1
+    print(p2.mostrar()) # Muestra el polinomio 2
+    print(p1.obtener_valor(7)) # Devuelve el coeficiente del término x^7
+    print(p2.obtener_valor(1)) # Devuelve el coeficiente del término x^1
 
-p3 = Polinomio.sumar(p1, p2) # Suma los polinomios p1 y p2
-print(p3.mostrar()) 
+    p3 = Polinomio.sumar(p1, p2) # Suma los polinomios p1 y p2
+    print(p3.mostrar()) 
 
-p4 = Polinomio.multiplicar(p1, p2) # Multiplica los polinomios p1 y p2
-print(p4.mostrar()) 
+    p4 = Polinomio.multiplicar(p1, p2) # Multiplica los polinomios p1 y p2
+    print(p4.mostrar()) 
 
-p5 = Polinomio.restar(p2, p1) # Resta los polinomios p1 y p2
-print(p5.mostrar()) 
+    p5 = Polinomio.restar(p2, p1) # Resta los polinomios p1 y p2
+    print(p5.mostrar()) 
 
-p1.eliminar_termino(3) # Elimina el término 7x^3 del polinomio p1
-print(p1.mostrar()) 
+    p1.eliminar_termino(3) # Elimina el término 7x^3 del polinomio p1
+    print(p1.mostrar()) 
 
-print(p1.existe_termino(5)) # Devuelve True si existe el término x^5 en el polinomio p2
-print(p2.existe_termino(3)) # Devuelve False si no existe el término x^3 en el polinomio p2
+    print(p1.existe_termino(5)) # Devuelve True si existe el término x^5 en el polinomio p2
+    print(p2.existe_termino(3)) # Devuelve False si no existe el término x^3 en el polinomio p2
 
-p6 = Polinomio.dividir(p1, p2) # Divide los polinomios p1 y p2
-print(p6.mostrar())
+    p6 = Polinomio.dividir(p1, p2) # Divide los polinomios p1 y p2
+    print(p6.mostrar())
