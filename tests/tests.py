@@ -4,7 +4,10 @@ import unittest
 from ejercicios import *
 
 class TestEjercicios(unittest.TestCase):
-    
+        
+        def setUp(self):
+             return super().setUp()
+        
         def test_ejercicio1(self):    
             origen = Torre()
             destino = Torre()
@@ -24,3 +27,11 @@ class TestEjercicios(unittest.TestCase):
 
         def test_ejercicio2(self):
              
+            matrix = [[1, 2, 3],
+                      [4, 5, 6],
+                      [7, 8, 9]]
+    
+            self.assertEqual(determinant_sarrus_recursive(matrix), 0)
+            self.assertEqual(determinant_sarrus_iterative(matrix), 0)             
+            
+        def test_ejercicio4(self):
