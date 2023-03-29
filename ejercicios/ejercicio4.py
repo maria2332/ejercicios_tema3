@@ -5,6 +5,7 @@ Implementar sobre el TDA polinomio desarrollado previamente las siguientes activ
  eliminar un término;
  determinar si un término existe en un polinomio.
 """
+import unittest
 
 class Nodo(object): 
     """Clase nodo simmplemente enlazado"""
@@ -147,6 +148,68 @@ class Polinomio(object):
             print("No se puede dividir")
         return paux
     
+#pruebas 
+class Testpolinomio (unittest.TestCase):
+    def test_agregar_termino(self):
+        p1 = Polinomio()
+        p1.agregar_termino(3, 7) # Agrega el término 7x^3
+        p1.agregar_termino(5, -2) # Agrega el término -2x^5
+        self.assertEqual(p1.mostrar(), "-2x^5+7x^3")
+        
+    def test_obtener_valor(self):
+        p1 = Polinomio()
+        p1.agregar_termino(3, 7) # Agrega el término 7x^3
+        p1.agregar_termino(5, -2) # Agrega el término -2x^5
+        self.assertEqual(p1.obtener_valor(3), 7)
+        
+    def test_eliminar_termino(self):
+        p1 = Polinomio()
+        p1.agregar_termino(3, 7) # Agrega el término 7x^3
+        p1.agregar_termino(5, -2) # Agrega el término -2x^5
+        p1.eliminar_termino(3)
+        self.assertEqual(p1.mostrar(), "-2x^5")
+        
+    def test_existe_termino(self):
+        p1 = Polinomio()
+        p1.agregar_termino(3, 7) # Agrega el término 7x^3
+        p1.agregar_termino(5, -2) # Agrega el término -2x^5
+        self.assertEqual(p1.existe_termino(3), True)
+        
+    # def test_sumar(self):
+    #     p1 = Polinomio()
+    #     p1.agregar_termino(3, 7) # Agrega el término 7x^3
+    #     p1.agregar_termino(5, -2) # Agrega el término -2x^5
+    #     p2 = Polinomio()
+    #     p2.agregar_termino(4, 7) # Agrega el término 7x^4
+    #     p2.agregar_termino(1, 1) # Agrega el término x (X^1)
+    #     self.assertEqual(p1.sumar(p1, p2).mostrar(), "+7x^3+7x^4-2x^5+x")
+
+    # def test_restar(self):
+    #     p1 = Polinomio()
+    #     p1.agregar_termino(3, 7)
+    #     p1.agregar_termino(5, -2)
+    #     p2 = Polinomio()
+    #     p2.agregar_termino(4, 7)
+    #     p2.agregar_termino(1, 1)
+    #     self.assertEqual(p1.restar(p1, p2).mostrar(), "+7x^3-7x^4-2x^5-x")
+
+    # def test_multiplicar(self):
+    #     p1 = Polinomio()
+    #     p1.agregar_termino(3, 7)
+    #     p1.agregar_termino(5, -2)
+    #     p2 = Polinomio()
+    #     p2.agregar_termino(4, 7)
+    #     p2.agregar_termino(1, 1)
+    #     self.assertEqual(p1.multiplicar(p1, p2).mostrar(), "+49x^7-14x^8-2x^9")
+
+    # def test_dividir(self):
+    #     p1 = Polinomio()
+    #     p1.agregar_termino(3, 7)
+    #     p1.agregar_termino(5, -2)
+    #     p2 = Polinomio()
+    #     p2.agregar_termino(4, 7)
+    #     p2.agregar_termino(1, 1)
+    #     self.assertEqual(p1.dividir(p1, p2).mostrar(), "+0.5x^1")
 
 if __name__ == "__main__":
     p1 = Polinomio()
@@ -179,3 +242,5 @@ if __name__ == "__main__":
 
     p6 = Polinomio.dividir(p1, p2) # Divide los polinomios p1 y p2
     print(p6.mostrar())
+
+    unittest.main()
