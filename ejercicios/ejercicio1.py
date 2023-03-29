@@ -6,6 +6,8 @@ y ningún disco podrá ponerse en- cima de otro más pequeño. Se dijo a los sac
 llegaría el fin del mundo. Resolver este problema de la Torre de Hanói.
 """
 
+import unittest
+
 class Disco:
     def __init__(self, tamaño):
         self.tamaño = tamaño
@@ -49,8 +51,27 @@ def torres_hanoi(n, origen, destino, auxiliar):
         Torre.mover_disco(origen, destino)
         torres_hanoi(n-1, auxiliar, destino, origen)
 
+# Pruebas
 
-
+class TestTorresHanoi(unittest.TestCase):
+    
+        def test_torres_hanoi(self):
+            origen = Torre()
+            destino = Torre()
+            auxiliar = Torre()
+    
+            # Apilando discos en la torre de origen
+            for i in range(6, 0, -1):
+                disco = Disco(i)
+                origen.apilar(disco)
+    
+            # Resolviendo la Torre de Hanoi
+            torres_hanoi(origen.obtener_altura(), origen, destino, auxiliar)
+    
+            # Imprimiendo el resultado final
+            self.assertEqual(origen.obtener_altura(), 0)
+            self.assertEqual(auxiliar.obtener_altura(), 0)
+            self.assertEqual(destino.obtener_altura(), 6)
 
 if __name__ == "__main__":
 
@@ -73,3 +94,5 @@ if __name__ == "__main__":
     print("Torre de origen: ", origen.obtener_altura())
     print("Torre auxiliar: ", auxiliar.obtener_altura())
     print("Torre de destino: ", destino.obtener_altura())
+
+    unittest.main()
