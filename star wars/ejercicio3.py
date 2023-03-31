@@ -24,9 +24,6 @@ class Naves:
     def __str__(self):
         return f"{self.nombre} {self.largo} {self.tripulacion} {self.pasajeros}"
 
-
-    
-
 def leer_archivo():
     with open('starships.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
